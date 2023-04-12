@@ -45,7 +45,12 @@ function DisplayTextOnScreen(fieldId, text = "") {
   field.innerHTML = `<p>${text}<\p>`
 }
 
-document.querySelector("#encrypt").addEventListener("click", () => {
+function CopyToClipboard(inputId = "") {
+  let resultArea = document.querySelector(inputId)
+  navigator.clipboard.writeText(resultArea.innerText)
+}
+
+document.querySelector("#encrypt_button").addEventListener("click", () => {
   var text = InputIsValid("#text_input");
 
   if (text) {
@@ -56,7 +61,7 @@ document.querySelector("#encrypt").addEventListener("click", () => {
   }
 });
 
-document.querySelector("#decrypt").addEventListener("click", () => {
+document.querySelector("#decrypt_button").addEventListener("click", () => {
   var text = InputIsValid("#text_input");
 
   if (text) {
@@ -66,3 +71,9 @@ document.querySelector("#decrypt").addEventListener("click", () => {
     alert("Por favor, preencha o campo!");
   }
 });
+
+document.querySelector("#copy_button").addEventListener("click", () => {
+  CopyToClipboard("#result")
+
+  alert("Valor Copiado!")
+})
