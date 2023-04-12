@@ -5,30 +5,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
   <title>Criptografar Texto</title>
 </head>
 
-<body>
-  <header>
+<body id="body">
+  <header id="header">
     <img src="./icon.svg" alt="Alura logo">
   </header>
   <main>
-    <textarea name="text_input" id="text_input" cols="30" rows="10" placeholder="Digite seu texto"
-    aria-describedby="text_input_desc"></textarea>
-    <p id="text_input_desc">Apenas letras minúsculas e sem acento.</p>
+    <textarea name="text_input" id="text_input" cols="30" rows="8" placeholder="Digite seu texto"
+      aria-describedby="text_input_desc"></textarea>
+    <span class="desc_container">
+      <img src="./alert_icon.svg" alt="alert icon">
+      <p id="text_input_desc">Apenas letras minúsculas e sem acento.</p>
+    </span>
 
     <div class="buttons">
-      <button id="encrypt_button">Criptografar</button>
-      <button id="decrypt_button">Descriptografar</button>
+      <button class="button primary_button" id="encrypt_button" type="submit">Criptografar</button>
+      <button class="button secondary_button" id="decrypt_button" type="submit">Descriptografar</button>
     </div>
 
-    <section class="result_container" id="result_container">
-      <div class="result" id="result" aria-live="assertive">
-        <p class="big_p">Nenhuma mensagem encontrada</p>
+    <section class="result_container" id="result_container" aria-live="assertive">
+      <div class="placeholder" id="placeholder" >
+        <strong class="strong"><p>Nenhuma mensagem encontrada</p></strong>
         <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
       </div>
-      <button id="copy_button">Copiar</button>
+
+      <div class=" result hidden_content" id="result">
+        <p class="result_p"></p>
+        <button class="button secondary_button" id="copy_button">Copiar</button>
+      </div>
     </section>
 
   </main>
