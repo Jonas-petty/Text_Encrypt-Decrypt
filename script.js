@@ -4,26 +4,26 @@ function InputIsValid(inputId = "") {
 }
 
 function Encrypt(text) {
-  let encryptedText = ""
-  for(let i  = 0; i < text.length; i++) {
+  let encryptedText = "";
+  for (let i = 0; i < text.length; i++) {
     switch (text[i]) {
       case "a":
-        encryptedText += "ai"
-        break
+        encryptedText += "ai";
+        break;
       case "e":
-        encryptedText += "enter"
-        break
+        encryptedText += "enter";
+        break;
       case "i":
-        encryptedText += "imes"
-        break
+        encryptedText += "imes";
+        break;
       case "o":
-        encryptedText += "ober"
-        break
+        encryptedText += "ober";
+        break;
       case "u":
-        encryptedText += "ufat"
-        break
+        encryptedText += "ufat";
+        break;
       default:
-        encryptedText += text[i]
+        encryptedText += text[i];
     }
   }
   return encryptedText;
@@ -31,23 +31,32 @@ function Encrypt(text) {
 
 function Decrypt(text) {
   let decryptedText = text
-  .replace(/ai/g, "a")
-  .replace(/enter/g, "e")
-  .replace(/imes/g, "i")
-  .replace(/ober/g, "o")
-  .replace(/ufat/g, "u")
+    .replace(/ai/g, "a")
+    .replace(/enter/g, "e")
+    .replace(/imes/g, "i")
+    .replace(/ober/g, "o")
+    .replace(/ufat/g, "u");
 
-  return decryptedText
+  return decryptedText;
 }
 
 function DisplayTextOnScreen(fieldId, text = "") {
-  let field = document.querySelector(fieldId)
-  field.innerHTML = `<p>${text}<\p>`
+  let container = document.querySelector(fieldId);
+  let result = container.querySelector("#result")
+  let placeholder = container.querySelector("#placeholder")
+
+  if (result.className.includes("hidden_content")) {
+    result.className = "result"
+    placeholder.className = "placeholder hidden_content"
+  }
+
+  document.querySelector(".result_p").innerText = text
+  
 }
 
 function CopyToClipboard(inputId = "") {
-  let resultArea = document.querySelector(inputId)
-  navigator.clipboard.writeText(resultArea.innerText)
+  let resultArea = document.querySelector(inputId);
+  navigator.clipboard.writeText(resultArea.innerText);
 }
 
 document.querySelector("#encrypt_button").addEventListener("click", () => {
@@ -55,7 +64,7 @@ document.querySelector("#encrypt_button").addEventListener("click", () => {
 
   if (text) {
     let encryptedText = Encrypt(text);
-    DisplayTextOnScreen("#result", encryptedText)
+    DisplayTextOnScreen("#result_container", encryptedText);
   } else {
     alert("Por favor, preencha o campo!");
   }
@@ -66,14 +75,14 @@ document.querySelector("#decrypt_button").addEventListener("click", () => {
 
   if (text) {
     let encryptedText = Decrypt(text);
-    DisplayTextOnScreen("#result", encryptedText)
+    DisplayTextOnScreen("#result_container", encryptedText);
   } else {
     alert("Por favor, preencha o campo!");
   }
 });
 
 document.querySelector("#copy_button").addEventListener("click", () => {
-  CopyToClipboard("#result")
+  CopyToClipboard(".result_p");
 
-  alert("Valor Copiado!")
-})
+  alert("Valor Copiado!");
+});
