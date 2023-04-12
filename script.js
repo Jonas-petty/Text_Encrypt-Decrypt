@@ -29,6 +29,17 @@ function Encrypt(text) {
   return encryptedText;
 }
 
+function Decrypt(text) {
+  let decryptedText = text
+  .replace(/ai/g, "a")
+  .replace(/enter/g, "e")
+  .replace(/imes/g, "i")
+  .replace(/ober/g, "o")
+  .replace(/ufat/g, "u")
+
+  return decryptedText
+}
+
 function DisplayTextOnScreen(fieldId, text = "") {
   let field = document.querySelector(fieldId)
   field.innerHTML = `<p>${text}<\p>`
@@ -46,5 +57,12 @@ document.querySelector("#encrypt").addEventListener("click", () => {
 });
 
 document.querySelector("#decrypt").addEventListener("click", () => {
-  alert("decrypt");
+  var text = InputIsValid("#text_input");
+
+  if (text) {
+    let encryptedText = Decrypt(text);
+    DisplayTextOnScreen("#result", encryptedText)
+  } else {
+    alert("Por favor, preencha o campo!");
+  }
 });
