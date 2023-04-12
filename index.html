@@ -14,19 +14,28 @@
     <img src="./icon.svg" alt="Alura logo">
   </header>
   <main>
-    <textarea name="text_input" id="text_input" cols="30" rows="10" placeholder="Digite seu texto"></textarea>
+    <textarea name="text_input" id="text_input" cols="30" rows="10" placeholder="Digite seu texto"
+    aria-describedby="text_input_desc"></textarea>
+    <p id="text_input_desc">Apenas letras minúsculas e sem acento.</p>
+
     <div class="buttons">
       <button id="encrypt">Criptografar</button>
       <button id="decrypt">Descriptografar</button>
     </div>
-    <section class="result" id="result">
-      <p class="big_p">Nenhuma mensagem encontrada</p>
-      <p>Digite um texto que você deseja criptografar ou descriptografar</p>
+
+    <section class="result_container" id="result_container">
+      <div class="result" id="result" aria-live="assertive">
+        <p class="big_p">Nenhuma mensagem encontrada</p>
+        <p>Digite um texto que você deseja criptografar ou descriptografar</p>
+      </div>
+      <button>Copiar</button>
     </section>
+    
   </main>
   <footer>
     <p>Desenvolvido por <a href="#">@Jonas_Felix</a></p>
   </footer>
 </body>
 <script src="script.js"></script>
+
 </html>
