@@ -12,7 +12,7 @@
 <figure>
   <img src="./badge1.png" style="width: 20rem; display: block; margin: auto;">
   <figcaption style="text-align: center;">
-  The Badge offered to those who succsuccessfullyesfuly finish the challenge
+  The Badge offered to those who successfully finish the challenge
   </figcaption>
 </figure>
 
