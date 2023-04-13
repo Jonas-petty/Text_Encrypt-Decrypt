@@ -45,9 +45,9 @@ function DisplayTextOnScreen(fieldId, text = "") {
   let result = container.querySelector("#result")
   let placeholder = container.querySelector("#placeholder")
 
-  if (result.className.includes("hidden_content")) {
-    result.className = "result"
-    placeholder.className = "placeholder hidden_content"
+  if (result.className.includes("hidden")) {
+    result.className = ""
+    placeholder.className = "hidden"
   }
 
   document.querySelector(".result_p").innerText = text
@@ -64,7 +64,16 @@ document.querySelector("#encrypt_button").addEventListener("click", () => {
 
   if (text) {
     let encryptedText = Encrypt(text);
-    DisplayTextOnScreen("#result_container", encryptedText);
+    let defaultContent = document.querySelector("#default_content")
+    let resultsContainer = document.querySelector("#results_container")
+
+    if (resultsContainer.className.includes("hidden")) {
+      resultsContainer.className = ""
+      defaultContent.className = "hidden"
+    }
+
+    document.querySelector(".results").innerText = encryptedText
+    
   } else {
     alert("Por favor, preencha o campo!");
   }
@@ -74,15 +83,23 @@ document.querySelector("#decrypt_button").addEventListener("click", () => {
   var text = InputIsValid("#text_input");
 
   if (text) {
-    let encryptedText = Decrypt(text);
-    DisplayTextOnScreen("#result_container", encryptedText);
+    let decryptedText = Decrypt(text);
+    let defaultContent = document.querySelector("#default_content")
+    let resultsContainer = document.querySelector("#results_container")
+
+    if (resultsContainer.className.includes("hidden")) {
+      resultsContainer.className = ""
+      defaultContent.className = "hidden"
+    }
+
+    document.querySelector(".results").innerText = decryptedText
   } else {
     alert("Por favor, preencha o campo!");
   }
 });
 
 document.querySelector("#copy_button").addEventListener("click", () => {
-  CopyToClipboard(".result_p");
+  CopyToClipboard(".results");
 
   alert("Valor Copiado!");
 });

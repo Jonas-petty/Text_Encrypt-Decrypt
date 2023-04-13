@@ -10,39 +10,40 @@
   <title>Criptografar Texto</title>
 </head>
 
-<body id="body">
-  <header id="header">
-    <img src="./icon.svg" alt="Alura logo">
+<body>
+  <header>
+    <h1><img src="./icon.svg" alt="icon"></h1>
+    <button class="theme_button" id="theme_button">
+      <img src="./sun.svg" alt="Botão para alternar tema">
+    </button>
   </header>
+
   <main>
-    <textarea name="text_input" id="text_input" cols="30" rows="8" placeholder="Digite seu texto"
-      aria-describedby="text_input_desc"></textarea>
-    <span class="desc_container">
-      <img src="./alert_icon.svg" alt="alert icon">
-      <p id="text_input_desc">Apenas letras minúsculas e sem acento.</p>
-    </span>
+    <section class="text_section" id="text_section">
+      <textarea aria-describedby="input_desc" name="text_input" id="text_input"></textarea>
 
-    <div class="buttons">
-      <button class="button primary_button" id="encrypt_button" type="submit">Criptografar</button>
-      <button class="button secondary_button" id="decrypt_button" type="submit">Descriptografar</button>
-    </div>
-
-    <section class="result_container" id="result_container" aria-live="assertive">
-      <div class="placeholder" id="placeholder" >
-        <strong class="strong"><p>Nenhuma mensagem encontrada</p></strong>
+      <span id="desc">
+        <img src="./alert_icon.svg" alt="alert icon">
+        <p id="input_desc">Apenas letras minúsculas e sem acento.</p>
+      </span>
+      <div class="buttons" id="buttons">
+        <button class="button primary_button" id="encrypt_button">Criptografar</button>
+        <button class="button secondary_button" id="decrypt_button">Descriptografar</button>
+      </div>
+    </section>
+      
+    <section class="display_section" id="display_section">
+      <div class="" id="default_content">
+        <p><strong>Nenhuma mensagem encontrada</strong></p>
         <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
       </div>
-
-      <div class=" result hidden_content" id="result">
-        <p class="result_p"></p>
-        <button class="button secondary_button" id="copy_button">Copiar</button>
+      <div class="hidden" id="results_container">
+          <p class="results"></p>
+          <button class="button" id="copy_button">Copiar</button>
       </div>
     </section>
 
   </main>
-  <footer>
-    <p>Desenvolvido por <a href="#">@Jonas_Felix</a></p>
-  </footer>
 </body>
 <script src="script.js"></script>
 
