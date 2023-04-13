@@ -40,20 +40,6 @@ function Decrypt(text) {
   return decryptedText;
 }
 
-function DisplayTextOnScreen(fieldId, text = "") {
-  let container = document.querySelector(fieldId);
-  let result = container.querySelector("#result")
-  let placeholder = container.querySelector("#placeholder")
-
-  if (result.className.includes("hidden")) {
-    result.className = ""
-    placeholder.className = "hidden"
-  }
-
-  document.querySelector(".result_p").innerText = text
-  
-}
-
 function CopyToClipboard(inputId = "") {
   let resultArea = document.querySelector(inputId);
   navigator.clipboard.writeText(resultArea.innerText);
